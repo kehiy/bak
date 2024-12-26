@@ -1,0 +1,7 @@
+{
+    "id":"unique",
+    "name":"display",
+    "description": "anything!",
+    "image":"https://example.com/image.png",
+    "pow": 21
+}
