@@ -61,10 +61,10 @@ func buildIssueCmd(parentCmd *cobra.Command) {
 		}
 
 		e := nostr.Event{
-			PubKey: pk,
+			PubKey:    pk,
 			CreatedAt: nostr.Timestamp(time.Now().Unix()),
-			Kind: nostr.KindBadgeDefinition,
-			Content: "",
+			Kind:      nostr.KindBadgeDefinition,
+			Content:   "",
 			Tags: nostr.Tags{
 				{"d", info.ID},
 				{"name", info.Name},
@@ -109,7 +109,7 @@ func buildIssueCmd(parentCmd *cobra.Command) {
 				cmd.Println(err)
 				continue
 			}
-		
+
 			cmd.Printf("published to %s\n", url)
 		}
 	}

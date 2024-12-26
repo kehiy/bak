@@ -24,6 +24,7 @@ func main() {
 
 	buildListCmd(rootCmd)
 	buildIssueCmd(rootCmd)
+	buildAwardCmd(rootCmd)
 
 	err := rootCmd.Execute()
 	if err != nil {

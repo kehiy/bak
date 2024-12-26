@@ -28,7 +28,8 @@ func buildListCmd(parentCmd *cobra.Command) {
 		for _, r := range *relayAddrsOpt {
 			relay, err := nostr.RelayConnect(context.Background(), r)
 			if err != nil {
-				panic(err)
+				cmd.PrintErrln(err)
+				os.Exit(1)
 			}
 
 			relays = append(relays, *relay)
@@ -53,7 +54,8 @@ func buildListCmd(parentCmd *cobra.Command) {
 		for _, r := range relays {
 			sub, err := r.Subscribe(ctx, filters)
 			if err != nil {
-				panic(err)
+				cmd.PrintErrln(err)
+				os.Exit(1)
 			}
 
 			for ev := range sub.Events {
@@ -72,7 +74,7 @@ func buildListCmd(parentCmd *cobra.Command) {
 			cmd.Println("Age:", time.Since(e.CreatedAt.Time()))
 			cmd.Println()
 		}
-		
+
 		cmd.Println("Total Badges issued:", len(resp))
 	}
 }
